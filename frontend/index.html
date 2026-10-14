@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111d3a">
+
+    <title>CampusFlow · Student Information</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="shell">
+
+        <!-- Sidebar -->
+        <aside id="side">
+            <a class="brand" href="#/dashboard">
+                <i>C</i>campus<span>flow</span>
+            </a>
+
+            <small class="label">WORKSPACE</small>
+
+            <nav>
+                <a data-nav="dashboard" href="#/dashboard">
+                    ▦ &nbsp; Dashboard
+                </a>
+
+                <a data-nav="students" href="#/students">
+                    ♧ &nbsp; Students
+                </a>
+
+                <a data-nav="add" href="#/add">
+                    ＋ &nbsp; Add student
+                </a>
+
+                <a data-nav="search" href="#/search">
+                    ⌕ &nbsp; Search
+                </a>
+
+                <small class="label info">INFORMATION</small>
+
+                <a data-nav="about" href="#/">
+                    &nbsp; 
+                </a>
+            </nav>
+
+            <!-- Sidebar Footer -->
+            <div class="sidefoot">
+                <i></i>
+
+                <span>
+                    Student records
+                    <small>Connected through your API</small>
+                </span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+
+            <!-- Header -->
+            <header>
+                <button id="menu" aria-label="Open menu">
+                    ☰
+                </button>
+
+                <div class="crumb">
+                    Workspace <b>/</b>
+                    <strong id="where">Dashboard</strong>
+                </div>
+
+                <span class="admin">
+                    ● &nbsp;Admin workspace
+                </span>
+            </header>
+
+            <!-- Toast Notifications -->
+            <div id="toast" aria-live="polite"></div>
+
+            <!-- Dynamic Application Content -->
+            <section id="app">
+                <div class="loading">
+                    Loading workspace…
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer>
+                CampusFlow · Student information management
+            </footer>
+        </main>
+    </div>
+
+    <!-- Modal Container -->
+    <div id="modal"></div>
+
+    <!-- JavaScript Files -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

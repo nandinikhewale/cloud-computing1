@@ -1,0 +1,868 @@
+
+/* ========================================
+   1. CSS Variables and Global Styles
+======================================== */
+
+:root {
+    --navy: #111d3a;
+    --ink: #1c2945;
+    --muted: #77839a;
+    --line: #e8ebf2;
+    --bg: #f6f7fb;
+    --blue: #596ff1;
+    --cyan: #46c8d6;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 14px 'DM Sans', sans-serif;
+}
+
+.shell {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ========================================
+   2. Sidebar and Branding
+======================================== */
+
+aside {
+    width: 235px;
+    background: var(--navy);
+    color: #d8e2fb;
+    padding: 25px 16px 17px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    z-index: 5;
+    transition: 0.2s;
+}
+
+.brand {
+    margin: 0 8px 42px;
+    color: white;
+    text-decoration: none;
+    font: 800 19px Manrope, sans-serif;
+}
+
+.brand i {
+    display: inline-grid;
+    place-items: center;
+    margin-right: 10px;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: linear-gradient(140deg, #6379ff, var(--cyan));
+    font-style: normal;
+}
+
+.brand span {
+    color: #8795b5;
+    font-weight: 500;
+}
+
+.label {
+    display: block;
+    color: #7482a5;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    padding: 0 12px 10px;
+    font-weight: 700;
+}
+
+/* Sidebar Navigation */
+
+nav {
+    display: grid;
+    gap: 4px;
+}
+
+nav a {
+    color: #aeb9d4;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+nav a:hover,
+nav a.active {
+    background: #ffffff13;
+    color: white;
+}
+
+.info {
+    margin-top: 29px;
+}
+
+/* Sidebar Footer */
+
+.sidefoot {
+    margin-top: auto;
+    border-top: 1px solid #ffffff20;
+    padding: 16px 8px 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 11px;
+}
+
+.sidefoot i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #42c793;
+    box-shadow: 0 0 0 4px #42c79320;
+}
+
+.sidefoot small {
+    display: block;
+    color: #8897b7;
+    margin-top: 4px;
+    font-size: 10px;
+}
+
+/* ========================================
+   3. Main Layout and Header
+======================================== */
+
+main {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 66px;
+    background: white;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 34px;
+}
+
+.crumb {
+    font-size: 12px;
+    color: #9aa3b5;
+}
+
+.crumb b {
+    margin: 0 9px;
+    color: #d1d5df;
+}
+
+.crumb strong {
+    color: #34415e;
+}
+
+.admin {
+    font-size: 11px;
+    color: #71809a;
+    background: #f6f7fa;
+    padding: 8px 11px;
+    border-radius: 20px;
+}
+
+#menu {
+    display: none;
+}
+
+/* Main Application Content */
+
+#app {
+    width: min(1240px, 100%);
+    margin: 0 auto;
+    padding: 30px 34px;
+    flex: 1;
+}
+
+.loading {
+    height: 220px;
+    display: grid;
+    place-items: center;
+    color: #8792a6;
+}
+
+footer {
+    padding: 10px 34px 16px;
+    color: #9ba4b4;
+    font-size: 10px;
+}
+
+/* ========================================
+   4. Page Headings
+======================================== */
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 22px;
+    gap: 15px;
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    color: #7b88a4;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.heading h1 {
+    font: 700 25px Manrope, sans-serif;
+    letter-spacing: -0.6px;
+    margin: 0;
+}
+
+.heading p {
+    color: var(--muted);
+    font-size: 12px;
+    margin: 7px 0 0;
+}
+
+/* ========================================
+   5. Buttons
+======================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 13px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    font: 600 12px 'DM Sans', sans-serif;
+    cursor: pointer;
+}
+
+.primary {
+    background: var(--blue);
+    color: white;
+}
+
+.soft {
+    background: #eef0ff;
+    color: #4b62e5;
+}
+
+.outline {
+    border-color: var(--line);
+    background: white;
+    color: #5b6680;
+}
+
+.danger {
+    background: #fff0f1;
+    color: #c03c4a;
+}
+
+.btn:disabled {
+    opacity: 0.55;
+}
+
+/* ========================================
+   6. Cards and Dashboard Statistics
+======================================== */
+
+.card {
+    background: white;
+    border: 1px solid #eceff4;
+    border-radius: 12px;
+    box-shadow: 0 7px 22px #1c29450a;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 13px;
+    margin-bottom: 16px;
+}
+
+.stat {
+    padding: 16px;
+    min-height: 108px;
+}
+
+.stat span {
+    font-size: 11px;
+    color: #78839a;
+}
+
+.stat strong {
+    display: block;
+    font: 700 25px Manrope, sans-serif;
+    margin-top: 12px;
+}
+
+/* Dashboard Panels */
+
+.dashgrid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 14px;
+    margin-bottom: 15px;
+}
+
+.panel {
+    padding: 18px;
+}
+
+.panel h2 {
+    font: 700 13px Manrope, sans-serif;
+    margin: 0 0 17px;
+}
+
+/* Department Statistics Bars */
+
+.barrow {
+    display: grid;
+    grid-template-columns: 120px 1fr 25px;
+    gap: 9px;
+    align-items: center;
+    margin: 13px 0;
+    font-size: 11px;
+    color: #65718a;
+}
+
+.track {
+    height: 7px;
+    border-radius: 8px;
+    background: #f0f2f7;
+}
+
+.fill {
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+}
+
+/* Semester Statistics */
+
+.semesters {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+}
+
+.sem {
+    border-radius: 8px;
+    background: #f7f8fb;
+    padding: 10px;
+    text-align: center;
+    font-size: 9px;
+    color: #858fa3;
+}
+
+.sem b {
+    display: block;
+    font: 700 17px Manrope, sans-serif;
+    color: #263451;
+}
+
+/* ========================================
+   7. Student Table
+======================================== */
+
+.tablewrap {
+    overflow: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+.table th {
+    text-align: left;
+    background: #fafbfc;
+    color: #8993a7;
+    font-size: 9px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 11px;
+}
+
+.table td {
+    padding: 11px;
+    border-bottom: 1px solid #f0f2f6;
+    font-size: 11px;
+    color: #536078;
+}
+
+.table tr:last-child td {
+    border: 0;
+}
+
+.person {
+    font-weight: 600;
+    color: #283651 !important;
+}
+
+.tag {
+    background: #edf0ff;
+    color: #5769ce;
+    padding: 5px 8px;
+    border-radius: 20px;
+    font-size: 9px;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+.action {
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    color: #64718a;
+    background: #fff;
+    padding: 5px 7px;
+    font-size: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ========================================
+   8. Search, Filters and Toolbars
+======================================== */
+
+.toolbar {
+    padding: 12px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.field,
+select {
+    height: 39px;
+    border: 1px solid #e2e7ef;
+    border-radius: 7px;
+    padding: 0 10px;
+    background: #fff;
+    color: #394660;
+    font: 12px 'DM Sans', sans-serif;
+    outline: none;
+}
+
+.field:focus,
+select:focus {
+    border-color: #8797ff;
+    box-shadow: 0 0 0 3px #596ff11a;
+}
+
+.toolbar .field {
+    flex: 1;
+    min-width: 190px;
+}
+
+.toolbar select {
+    min-width: 130px;
+}
+
+/* Search Page */
+
+.searchhero {
+    padding: 22px;
+    background: linear-gradient(120deg, #1a294c, #2c4376);
+    color: white;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.searchhero h2 {
+    font: 700 18px Manrope, sans-serif;
+    margin: 0 0 6px;
+}
+
+.searchhero p {
+    color: #c5cfe3;
+    font-size: 11px;
+    margin: 0 0 15px;
+}
+
+.searchrow {
+    display: flex;
+    gap: 8px;
+}
+
+.searchrow input {
+    flex: 1;
+}
+
+.result {
+    padding: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ========================================
+   9. Student Forms
+======================================== */
+
+.form {
+    padding: 22px;
+    max-width: 800px;
+}
+
+.fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.fields label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #4c5872;
+    margin-bottom: 7px;
+}
+
+.fields input,
+.fields select {
+    width: 100%;
+    height: 41px;
+}
+
+.req {
+    color: #d34b57;
+}
+
+.hint,
+.err {
+    font-size: 10px;
+    margin-top: 5px;
+    color: #9ba3b2;
+}
+
+.err {
+    color: #c13b48;
+    min-height: 12px;
+}
+
+.formactions {
+    border-top: 1px solid #edf0f4;
+    padding-top: 17px;
+    margin-top: 19px;
+    display: flex;
+    gap: 8px;
+}
+
+/* ========================================
+   10. Empty States and Error Messages
+======================================== */
+
+.empty {
+    text-align: center;
+    padding: 34px;
+    color: #8791a4;
+}
+
+.empty b {
+    display: block;
+    color: #38445f;
+    margin-bottom: 6px;
+}
+
+.empty p {
+    font-size: 11px;
+    margin: 0 0 12px;
+}
+
+.error {
+    padding: 18px;
+    background: #fffafa;
+    border: 1px solid #f0d5d9;
+    border-radius: 9px;
+    color: #8f424a;
+    font-size: 12px;
+}
+
+/* ========================================
+   11. Student Details
+======================================== */
+
+.details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.detail {
+    border: 1px solid #eef0f4;
+    border-radius: 8px;
+    padding: 13px;
+}
+
+.detail small {
+    display: block;
+    color: #929bad;
+    text-transform: uppercase;
+    font-size: 9px;
+    margin-bottom: 6px;
+}
+
+.detail b {
+    font-size: 12px;
+}
+
+/* ========================================
+   12. Architecture Information
+======================================== */
+
+.tiergrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.tier {
+    padding: 18px;
+}
+
+.tier small {
+    color: #7381ed;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.tier h3 {
+    font: 700 14px Manrope, sans-serif;
+}
+
+.tier p,
+.notice {
+    font-size: 11px;
+    color: #77839a;
+    line-height: 1.6;
+}
+
+.notice {
+    padding: 14px;
+    background: #eff8fb;
+    border-radius: 8px;
+    color: #547987;
+}
+
+/* ========================================
+   13. Pagination
+======================================== */
+
+.pager {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    color: #8a94a8;
+    font-size: 10px;
+}
+
+/* ========================================
+   14. Toast Notifications
+======================================== */
+
+.toast {
+    position: fixed;
+    top: 78px;
+    right: 20px;
+    background: #17233f;
+    color: white;
+    padding: 12px 17px;
+    border-radius: 8px;
+    z-index: 10;
+    font-size: 12px;
+    box-shadow: 0 8px 28px #111d3a33;
+}
+
+.toast.bad {
+    background: #a03744;
+}
+
+/* ========================================
+   15. Confirmation Modal
+======================================== */
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: #0f1b3677;
+    z-index: 8;
+    display: grid;
+    place-items: center;
+    padding: 15px;
+}
+
+.dialog {
+    background: white;
+    border-radius: 12px;
+    padding: 22px;
+    max-width: 420px;
+    width: 100%;
+}
+
+.dialog h2 {
+    font: 700 16px Manrope, sans-serif;
+}
+
+.dialog p {
+    font-size: 12px;
+    color: #768198;
+    line-height: 1.5;
+}
+
+.dialogfoot {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.mobileback {
+    display: none;
+}
+
+/* ========================================
+   16. Tablet Responsive Styles
+======================================== */
+
+@media (max-width: 900px) {
+    #app {
+        padding: 24px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashgrid {
+        grid-template-columns: 1fr;
+    }
+
+    .tiergrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   17. Mobile Responsive Styles
+======================================== */
+
+@media (max-width: 650px) {
+    aside {
+        position: fixed;
+        inset: 0 auto 0 0;
+        transform: translateX(-100%);
+        box-shadow: 10px 0 30px #111d3a33;
+    }
+
+    aside.open {
+        transform: translateX(0);
+    }
+
+    .mobileback.show {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: #101b3677;
+        z-index: 4;
+    }
+
+    #menu {
+        display: block;
+        border: 0;
+        background: white;
+        font-size: 19px;
+        color: #263451;
+    }
+
+    header {
+        height: 58px;
+        padding: 0 14px;
+        justify-content: flex-start;
+        gap: 14px;
+    }
+
+    .admin {
+        display: none;
+    }
+
+    #app {
+        padding: 20px 13px;
+    }
+
+    footer {
+        padding: 10px 14px;
+    }
+
+    .heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .heading h1 {
+        font-size: 22px;
+    }
+
+    .stats {
+        gap: 8px;
+    }
+
+    .stat {
+        padding: 12px;
+        min-height: 97px;
+    }
+
+    .stat strong {
+        font-size: 22px;
+    }
+
+    .fields,
+    .details {
+        grid-template-columns: 1fr;
+    }
+
+    .form {
+        padding: 15px;
+    }
+
+    .searchrow {
+        flex-direction: column;
+    }
+
+    .searchrow .btn {
+        width: 100%;
+    }
+
+    .result {
+        gap: 8px;
+        align-items: flex-start;
+    }
+
+    .barrow {
+        grid-template-columns: 95px 1fr 20px;
+    }
+
+    .toast {
+        left: 10px;
+        right: 10px;
+        text-align: center;
+    }
+}
