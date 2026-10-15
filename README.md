@@ -24,7 +24,7 @@ Create a cluster and least-privilege database user. Configure Atlas Network Acce
 
 If Node reports `querySrv ECONNREFUSED` while resolving the Atlas hostname, check the machine's DNS resolver. You can optionally set `MONGODB_DNS_SERVERS=8.8.8.8,8.8.4.4` in `backend/.env` (or configure working DNS servers for the machine); the API uses this override only when the variable is set.
 ### Render API
-Create a Node web service rooted at backend/. Build: npm install. Start: npm start. In the Render dashboard, add `MONGODB_URI` (secret), `MONGODB_DB=studentDB`, and `NODE_ENV=production` under the service's environment variables. The deployed frontend origin `https://cloud-computing1-frontend.vercel.app` is allowed by default. Set `FRONTEND_URL` if you also need additional frontend URLs; use full HTTP(S) URLs, comma-separated. A trailing slash or path is normalized to the site origin. Render supplies PORT. After saving environment changes, redeploy the service. Verify /api/health reports database connected.
+Create a Node web service rooted at backend/. Build: npm install. Start: npm start. Configure MONGODB_URI (secret), MONGODB_DB=studentDB, FRONTEND_URL=<exact Netlify origin>, NODE_ENV=production. Render supplies PORT. Verify /api/health reports database connected. No live service URL is included in this source bundle.
 ### Netlify frontend
 Publish the frontend/ directory to `https://cloud-computing1-frontend.vercel.app`. Change STUDENT_API_BASE_URL in frontend/config.js to the real Render origin. Add any other deployed frontend origin to Render's FRONTEND_URL. Test create, search, edit, delete, and dashboard refresh on the deployed site.
 
@@ -33,3 +33,6 @@ Never put MONGODB_URI in frontend files. Do not commit .env. Use HTTPS, restrict
 
 ## Verification checklist
 [ ] Health shows MongoDB connected. [ ] Create and verify a record in Atlas. [ ] Duplicate Student IDs return 409. [ ] Invalid email/semester/contact are rejected. [ ] Search, filter, details, edit, and confirmed delete work. [ ] Dashboard metrics update after CRUD. [ ] Test mobile and deployed CORS. [ ] Check that frontend source and git history contain no secrets.
+
+## live deployment link 
+https://cloud-computing1-frontend-myui2z1ej-nandini-khewales-projects.vercel.app
