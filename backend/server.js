@@ -87,9 +87,33 @@ const schema = new mongoose.Schema(
 const Student = mongoose.model('Student', schema);
 
 // CORS Configuration
-const origins = (process.env.FRONTEND_URL || 'http://localhost:8000')
+const configuredOrigins = (process.env.FRONTEND_URL || '')
     .split(',')
-    .map(x => x.trim());
+    .map(x => x.trim())
+    .filter(Boolean);
+
+const origins = [
+    'https://cloud-computing1-frontend.vercel.app',
+    ...configuredOrigins
+].map(value => {
+    let url;
+
+    try {
+        url = new URL(value);
+    } catch {
+        throw new Error(
+            `Invalid FRONTEND_URL value "${value}". Use a full HTTP(S) URL.`
+        );
+    }
+
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+        throw new Error(
+            `Invalid FRONTEND_URL value "${value}". Use a full HTTP(S) URL.`
+        );
+    }
+
+    return url.origin;
+});
 
 app.use(
     cors({
@@ -106,7 +130,7 @@ app.use(
                 return cb(null, true);
             }
 
-            return cb(new Error('Origin is not allowed by CORS'));
+            return cb(new Error(`Origin "${origin}" is not allowed by CORS`));
         }
     })
 );
